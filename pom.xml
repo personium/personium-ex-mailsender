@@ -3,7 +3,7 @@
 
   <groupId>io.personium</groupId>
   <artifactId>personium-engine-extension-mailsender</artifactId>
-  <version>1.5.1</version>
+  <version>1.5.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>personium-ex-mailsender</name>
