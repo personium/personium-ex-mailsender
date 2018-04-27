@@ -46,7 +46,7 @@
     <dependency>
       <groupId>io.personium</groupId>
       <artifactId>personium-ex-base</artifactId>
-      <version>1.4.3</version>
+      <version>1.4.4-SNAPSHOT</version>
     </dependency>
 
     <dependency>
@@ -57,17 +57,15 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.10</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
-        <dependency>
-            <groupId>dumbster</groupId>
-            <artifactId>dumbster</artifactId>
-            <version>1.6</version>
-            <scope>test</scope>
-        </dependency>
-
-
+    <dependency>
+      <groupId>dumbster</groupId>
+      <artifactId>dumbster</artifactId>
+      <version>1.6</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <repositories>
@@ -79,33 +77,25 @@
   </repositories>
 
   <build>
-    <resources>
-        <resource>
-            <targetPath>META-INF</targetPath>
-            <directory>../..</directory>
-            <includes>
-                <include>LICENSE.txt</include>
-                <include>NOTICE.txt</include>
-                <include>CHANGES.txt</include>
-            </includes>
-        </resource>
-    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
+        <version>3.7.0</version>
         <configuration>
           <source>${java.version}</source>
           <target>${java.version}</target>
           <encoding>UTF-8</encoding>
           <debug>true</debug>
           <optimize>false</optimize>
+          <compilerArgs>
+            <arg>-Xlint:all</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>3.1.1</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -119,9 +109,31 @@
         </executions>
       </plugin>
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <configLocation>personium-checkstyle.xml</configLocation>
+          <propertiesLocation>checkstyle_maven.properties</propertiesLocation>
+          <includeTestSourceDirectory>true</includeTestSourceDirectory>
+          <consoleOutput>true</consoleOutput>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.9.0</version>
+        <configuration>
+          <targetJdk>${java.version}</targetJdk>
+          <analysisCache>true</analysisCache>
+          <linkXRef>false</linkXRef>
+        </configuration>
+      </plugin>
+      <plugin>
         <groupId>com.mycila</groupId>
         <artifactId>license-maven-plugin</artifactId>
-        <version>2.6</version>
+        <version>3.0</version>
         <configuration>
           <header>../../copyright.txt</header>
           <excludes>
