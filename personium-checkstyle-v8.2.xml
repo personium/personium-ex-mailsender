@@ -93,7 +93,6 @@
             <property name="influenceFormat" value="0"/>
         </module>
     </module>
-    <module name="JavadocPackage"/>
     <module name="NewlineAtEndOfFile"/>
     <module name="Translation"/>
     <module name="FileLength">
