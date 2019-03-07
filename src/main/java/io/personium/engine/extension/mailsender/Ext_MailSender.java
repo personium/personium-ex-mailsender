@@ -1,5 +1,5 @@
 /**
- * Personium
+ * personium.io
  * Copyright 2016 FUJITSU LIMITED
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,7 +45,7 @@ import io.personium.engine.extension.support.ExtensionErrorConstructor;
  * Engine-Extension メール送信機能.
  */
 @SuppressWarnings("serial")
-public class Ext_MailSender extends AbstractExtensionScriptableObject {
+public class Ext_MailSender extends AbstractExtensionScriptableObject { // CHECKSTYLE IGNORE
 
     private static final String JAVAMAIL_SMTP_FROM_KEY = "mail.smtp.from";
     private static final String JAVAMAIL_SMTP_PORT_KEY = "mail.smtp.port";
@@ -98,7 +98,7 @@ public class Ext_MailSender extends AbstractExtensionScriptableObject {
     /**
      * 引数で指定された JSONの記述に従い、メールを送信する.
      * @param reqJson メール送信内容の JSON
-     * @throws Exception リクエスト内容の不備、メール送信時のエラー
+     * @throws EcmaError リクエスト内容の不備、メール送信時のエラー
      */
     @JSFunction
     public void send(NativeObject reqJson) throws EcmaError {
@@ -321,11 +321,11 @@ public class Ext_MailSender extends AbstractExtensionScriptableObject {
             throw ExtensionErrorConstructor.construct(message);
         }
         try {
-        	InternetAddress iAddress = new InternetAddress(address, true);
-        	if (null != name && !name.isEmpty()) {
-        	    iAddress.setPersonal(name, charset);
-        	}
-        	return iAddress;
+            InternetAddress iAddress = new InternetAddress(address, true);
+            if (null != name && !name.isEmpty()) {
+                iAddress.setPersonal(name, charset);
+            }
+            return iAddress;
         } catch (UnsupportedEncodingException e) {
             String message = "Unsupported encoding is specified for mail display name.";
             this.getLogger().info(message);
