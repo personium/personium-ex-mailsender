@@ -3,7 +3,7 @@
 
     <groupId>io.personium</groupId>
     <artifactId>personium-ex-mailsender</artifactId>
-    <version>1.5.2</version>
+    <version>1.5.3</version>
     <packaging>jar</packaging>
 
     <name>personium-ex-mailsender</name>
@@ -96,6 +96,8 @@
                         </goals>
                         <configuration>
                             <finalName>${final.name}</finalName>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>libs</shadedClassifierName>
                         </configuration>
                     </execution>
                 </executions>
@@ -233,5 +235,13 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <distributionManagement>
+        <repository>
+            <id>personium.io</id>
+            <name>personium.io</name>
+            <url>http://personium.io/mvnrepo</url>
+        </repository>
+    </distributionManagement>
 
 </project>
