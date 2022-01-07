@@ -28,9 +28,6 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <final.name>personium-ex-mailsender</final.name>
-            </properties>
         </profile>
     </profiles>
 
@@ -102,7 +99,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>${final.name}</finalName>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <shadedClassifierName>libs</shadedClassifierName>
                         </configuration>
